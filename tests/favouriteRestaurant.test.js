@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, xit } from '@jest/globals';
+import { beforeEach, describe, expect, it } from '@jest/globals';
 import FavouriteButtonInitiator from '../src/scripts/utils/favourite-button-initiator';
 import FavouriteRestaurant from '../src/scripts/data/favourite-restaurant';
 
@@ -67,7 +67,7 @@ describe('Add Restaurant Favourite', () => {
     await FavouriteRestaurant.deleteRestaurant(1);
   });
 
-  xit('should not add favourite restaurant when there is no id', async () => {
+  it('should not add favourite restaurant when there is no id', async () => {
     await FavouriteButtonInitiator.init({
       favouriteButtonContainer: document.querySelector('#favouriteButtonContainer'),
       restaurant: {},
