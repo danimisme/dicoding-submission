@@ -50,4 +50,31 @@ describe('Add Restaurant Favourite', () => {
     await FavouriteRestaurant.deleteRestaurant(1);
   });
 
+  // negative test
+
+  it('should not add favourite restaurant when already favourited', async () => {
+    await FavouriteButtonInitiator.init({
+      favouriteButtonContainer: document.querySelector('#favouriteButtonContainer'),
+      restaurant: {
+        id: 1,
+      },
+    });
+
+    await FavouriteRestaurant.putRestaurant({ id: 1 });
+    document.querySelector('#favouriteButton').dispatchEvent(new Event('click'));
+
+    expect(await FavouriteRestaurant.getAllRestaurants()).toEqual([{ id: 1 }]);
+    await FavouriteRestaurant.deleteRestaurant(1);
+  });
+
+  xit('should not add favourite restaurant when there is no id', async () => {
+    await FavouriteButtonInitiator.init({
+      favouriteButtonContainer: document.querySelector('#favouriteButtonContainer'),
+      restaurant: {},
+    });
+
+    document.querySelector('#favouriteButton').dispatchEvent(new Event('click'));
+
+    expect(await FavouriteRestaurant.getAllRestaurants()).toEqual([]);
+  });
 });
