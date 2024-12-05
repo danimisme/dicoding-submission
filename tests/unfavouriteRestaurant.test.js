@@ -37,4 +37,32 @@ describe('Unfavourite Restaurant', () => {
 
     expect(document.querySelector('[aria-label="favourite this restaurant"]')).toBeFalsy();
   });
+
+  it('should be able to unfavourite restaurant', async () => {
+    await FavouriteButtonInitiator.init({
+      favouriteButtonContainer: document.querySelector('#favouriteButtonContainer'),
+      restaurant: {
+        id: 1,
+      },
+    });
+
+    document.querySelector('#favouriteButton').dispatchEvent(new Event('click'));
+
+    expect(await FavouriteRestaurant.getAllRestaurants()).toEqual([]);
+  });
+
+  it('should not throw error when user click unfavourite button if the unfavourited restaurant is not in the list', async () => {
+    await FavouriteButtonInitiator.init({
+      favouriteButtonContainer: document.querySelector('#favouriteButtonContainer'),
+      restaurant: {
+        id: 1,
+      },
+    });
+
+    await FavouriteRestaurant.deleteRestaurant(1);
+    document.querySelector('#favouriteButton').dispatchEvent(new Event('click'));
+
+    expect(await FavouriteRestaurant.getAllRestaurants()).toEqual([]);
+  });
+
 });
