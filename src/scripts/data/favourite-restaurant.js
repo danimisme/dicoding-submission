@@ -20,30 +20,16 @@ const FavouriteRestaurant = {
     return (await dbPromise).getAll(OBJECT_STORE_NAME);
   },
   async searchRestaurants(query) {
-    // const db = await dbPromise;
-    // const allRestaurants = await db.getAll(OBJECT_STORE_NAME);
-    // // Filter restoran berdasarkan query
-    // if (query.length > 0) {
-    //   const lowerCaseQuery = query.toLowerCase();
-    //   return allRestaurants.filter((restaurant) =>
-    //     restaurant.name.toLowerCase().includes(lowerCaseQuery)
-    //   );
-    // }
-
-    // return allRestaurants; // Jika query kosong, kembalikan semua restoran
-
-    return (await this.getAllRestaurants()).filter((restaurant) => {
+    // Load Lodash dynamically
+    const { default: _ } = await import('lodash');
+    const allRestaurants = await this.getAllRestaurants();
+    const loweredCaseQuery = query.toLowerCase().replace(/\s/g, '');
+    return _.filter(allRestaurants, (restaurant) => {
       const loweredCaseRestaurantName = (restaurant.name || '-').toLowerCase();
       const jammedRestaurantName = loweredCaseRestaurantName.replace(/\s/g, '');
-
-      const loweredCaseQuery = query.toLowerCase();
-      const jammedQuery = loweredCaseQuery.replace(/\s/g, '');
-
-      return jammedRestaurantName.indexOf(jammedQuery) !== -1;
+      return _.includes(jammedRestaurantName, loweredCaseQuery);
     });
-
   },
-
   async putRestaurant(restaurant) {
     if (!Object.prototype.hasOwnProperty.call(restaurant, 'id')) {
       return;
