@@ -1,9 +1,9 @@
-const { default: FavoriteRestaurantSearchView } = require("../src/scripts/views/pages/favourited-restaurant/favourite-restaurant-search-view");
-const { default: FavoriteRestaurantShowPresenter } = require("../src/scripts/views/pages/favourited-restaurant/favourite-restaurant-show-presenter");
+const { default: FavoriteRestaurantSearchView } = require('../src/scripts/views/pages/favourited-restaurant/favourite-restaurant-search-view');
+const { default: FavoriteRestaurantShowPresenter } = require('../src/scripts/views/pages/favourited-restaurant/favourite-restaurant-show-presenter');
 
 describe('Showing all favorite Restaurants', () => {
   let view;
- 
+
   const renderTemplate = () => {
     view = new FavoriteRestaurantSearchView();
     document.body.innerHTML = view.getFavoriteRestaurantTemplate();
@@ -11,7 +11,7 @@ describe('Showing all favorite Restaurants', () => {
   beforeEach(() => {
     renderTemplate();
   });
- 
+
   describe('When no Restaurants have been liked', () => {
     it('should render the information that no Restaurants have been liked', () => {
       const favoriteRestaurant = {
@@ -22,25 +22,25 @@ describe('Showing all favorite Restaurants', () => {
         view,
         favoriteRestaurant,
       });
- 
+
       const restaurants = [];
       presenter._displayRestaurants(restaurants);
- 
+
       expect(document.querySelectorAll('.restaurant-item__not__found').length).toEqual(1);
     });
 
     it('should ask for the favorite Restaurants', () => {
-        const favoriteRestaurant = {
-          getAllRestaurants: jest.fn().mockImplementation(() => []),
-        };
-        new FavoriteRestaurantShowPresenter({
-          view,
-          favoriteRestaurant,
-        });
-        expect(favoriteRestaurant.getAllRestaurants).toHaveBeenCalledTimes(1);
+      const favoriteRestaurant = {
+        getAllRestaurants: jest.fn().mockImplementation(() => []),
+      };
+      new FavoriteRestaurantShowPresenter({
+        view,
+        favoriteRestaurant,
       });
+      expect(favoriteRestaurant.getAllRestaurants).toHaveBeenCalledTimes(1);
     });
+  });
 
 
-  
+
 });
