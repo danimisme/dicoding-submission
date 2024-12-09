@@ -21,7 +21,7 @@ const FavouriteRestaurant = {
   },
   async searchRestaurants(query) {
     // const db = await dbPromise;
-    // const allRestaurants = await db.getAll(OBJECT_STORE_NAME);  
+    // const allRestaurants = await db.getAll(OBJECT_STORE_NAME);
     // // Filter restoran berdasarkan query
     // if (query.length > 0) {
     //   const lowerCaseQuery = query.toLowerCase();
@@ -29,19 +29,19 @@ const FavouriteRestaurant = {
     //     restaurant.name.toLowerCase().includes(lowerCaseQuery)
     //   );
     // }
-  
+
     // return allRestaurants; // Jika query kosong, kembalikan semua restoran
 
     return (await this.getAllRestaurants()).filter((restaurant) => {
       const loweredCaseRestaurantName = (restaurant.name || '-').toLowerCase();
       const jammedRestaurantName = loweredCaseRestaurantName.replace(/\s/g, '');
- 
+
       const loweredCaseQuery = query.toLowerCase();
       const jammedQuery = loweredCaseQuery.replace(/\s/g, '');
- 
+
       return jammedRestaurantName.indexOf(jammedQuery) !== -1;
     });
-  
+
   },
 
   async putRestaurant(restaurant) {

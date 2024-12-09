@@ -1,4 +1,4 @@
-import { createRestaurantItemTemplate } from "../../templates/template-creator";
+import { createRestaurantItemTemplate } from '../../templates/template-creator';
 
 class FavoriteRestaurantSearchView {
   getTemplate() {
@@ -10,7 +10,7 @@ class FavoriteRestaurantSearchView {
         </div>
         <div id="restaurants" class="restaurants"></div>
       </div>
-    `
+    `;
   }
 
   getFavoriteRestaurantTemplate() {
@@ -32,7 +32,7 @@ class FavoriteRestaurantSearchView {
   showRestaurant(restaurants) {
     let html;
     if (!restaurants || !Array.isArray(restaurants)) {
-      restaurants = []; 
+      restaurants = [];
     }
     if (restaurants.length > 0) {
       html = restaurants.reduce((carry, restaurant) => carry.concat(createRestaurantItemTemplate(restaurant)), ''
@@ -49,8 +49,8 @@ class FavoriteRestaurantSearchView {
 
     document
     // .getElementById('restaurant-search-container')
-    .getElementById('restaurants')
-    .dispatchEvent(new Event('restaurants:searched:updated'));
+      .getElementById('restaurants')
+      .dispatchEvent(new Event('restaurants:searched:updated'));
   }
 }
 

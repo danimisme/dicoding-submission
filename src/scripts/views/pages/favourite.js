@@ -21,7 +21,7 @@ const Favourite = {
   //     view: FavoriteRestaurantSearchView
   //    });
   //   const restaurantsContainer = document.querySelector('#restaurants');
-  
+
   //   const renderRestaurants = async (query = '') => {
   //     restaurantsContainer.innerHTML = '<p>Loading...</p>';
   //     try {
@@ -30,7 +30,7 @@ const Favourite = {
   //         restaurants = await FavouriteRestaurant.searchRestaurants(query);
   //       }
   //       restaurantsContainer.innerHTML = '';
-  
+
   //       if (restaurants.length > 0) {
   //         restaurants.forEach((restaurant) => {
   //           restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
@@ -46,10 +46,10 @@ const Favourite = {
   //       restaurantsContainer.innerHTML = `<p>Error loading restaurants: ${error.message}</p>`;
   //     }
   //   };
-  
+
   //   // Render initial list
   //   await renderRestaurants();
-  
+
   //   // Listen for changes in query
   //   const queryElement = document.getElementById('query');
   //   queryElement.addEventListener('change', async () => {
@@ -66,8 +66,8 @@ const Favourite = {
     });
     view.showRestaurant(restaurants);
   },
-  
-  
+
+
 };
 
 export default Favourite;
