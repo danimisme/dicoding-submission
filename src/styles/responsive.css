@@ -56,6 +56,9 @@
   .app-bar .app-bar__brand h1 {
     font-size: 2em;
   }
+  .jumbotron {
+    height: 400px;
+  }
 }
 
 @media screen and (min-width: 850px) {
@@ -67,6 +70,9 @@
 @media screen and (min-width: 1200px) {
   .restaurants {
     grid-template-columns: repeat(4, 1fr);
+  }
+  .jumbotron {
+    height: 400px;
   }
 }
 

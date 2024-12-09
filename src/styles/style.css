@@ -114,7 +114,7 @@ a , button {
 
 .jumbotron {
   width: 100%;
-  height: 500px;
+  height: 300px;
   object-fit: cover;
 }
 
@@ -412,4 +412,34 @@ footer p a {
 
 .btn:focus-visible {
   outline: 3px solid #DB000055;
+}
+
+/* Search input */
+
+#restaurant-search-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+input #query {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+
+#query {
+  margin: 10px auto;
+  width: 80%;
+  max-width: 500px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+#query:focus {
+  border-color: #770000;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
