@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -69,18 +68,18 @@ module.exports = {
         },
       ],
     }),
-    new WorkboxWebpackPlugin.GenerateSW({
-      swDest: './sw.bundle.js',
-      runtimeCaching: [
-        {
-          urlPattern: ({ url }) => url.href.startsWith('https://restaurant-api.dicoding.dev'),
-          handler: 'StaleWhileRevalidate',
-          options: {
-            cacheName: 'Restaurant-V1',
-          },
-        },
-      ],
-    }),
+    // new WorkboxWebpackPlugin.GenerateSW({
+    //   swDest: './sw.bundle.js',
+    //   runtimeCaching: [
+    //     {
+    //       urlPattern: ({ url }) => url.href.startsWith('https://restaurant-api.dicoding.dev'),
+    //       handler: 'StaleWhileRevalidate',
+    //       options: {
+    //         cacheName: 'Restaurant-V1',
+    //       },
+    //     },
+    //   ],
+    // }),
     new ImageminWebpackPlugin({
       plugins: [
         ImageminMozjpeg({
