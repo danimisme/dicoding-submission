@@ -32,7 +32,10 @@
   </nav>
 </header>
 <div class="hero-section">
-  <img loading="lazy" src="./images/heros/hero-image_4.jpg" class="jumbotron" alt="restaurant image" />
+  <picture>
+    <source media="(max-width: 650px)" srcset="./images/hero-image_4-small.jpg">
+    <img loading="lazy" src="./images/hero-image_4-large.jpg" class="jumbotron" alt="restaurant image" />
+  </picture>
 </div>
 <main id="mainContent" tabindex="0"></main>
 <div id="app"></div>
