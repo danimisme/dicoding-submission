@@ -1,7 +1,7 @@
 import CONFIG from '../../globals/config';
 
 const createRestaurantDetailTemplate = (restaurant) => `
-  <h2 class="restaurant__title">${restaurant?.name}</h2>
+  <h2 class="restaurant__name">${restaurant?.name}</h2>
   <img loading="lazy" class="restaurant__poster" src="${restaurant?.pictureId ? `${CONFIG.BASE_IMAGE_URL}/medium/${restaurant?.pictureId}` : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="${restaurant?.name}" />
   <div class="restaurant__info">
   <h3>Information</h3>

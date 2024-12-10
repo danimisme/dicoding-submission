@@ -1,21 +1,15 @@
 import FavouriteRestaurant from '../../data/favourite-restaurant';
+import FavoriteRestaurantSearchPresenter from './favourite-restaurant-presenter';
 import FavoriteRestaurantSearchView from './favourited-restaurant/favourite-restaurant-search-view';
+import FavoriteRestaurantShowPresenter from './favourited-restaurant/favourite-restaurant-show-presenter';
+
+const view = new FavoriteRestaurantSearchView();
 
 const Favourite = {
   async render() {
-    return `
-      <div class="content">
-        <div id="restaurant-search-container">
-        <h2 class="content__heading">Your Favourite Restaurants</h2>
-          <input id="query" type="text" placeholder="Cari restaurant...">
-        </div>
-        <div id="restaurants" class="restaurants"></div>
-      </div>
-    `;
+    return view.getTemplate();
   },
 
-
-  // async afterRender() {
   //   const searchPresenter = new FavoriteRestaurantSearchPresenter( {
   //     favoriteRestaurants: FavouriteRestaurant,
   //     view: FavoriteRestaurantSearchView
@@ -59,12 +53,14 @@ const Favourite = {
   // },
 
   async afterRender() {
-    const restaurants = await FavouriteRestaurant.getAllRestaurants();
-    const view = new FavoriteRestaurantSearchView({
-      favoriteRestaurants: FavouriteRestaurant,
-      view: FavoriteRestaurantSearchView,
+    new FavoriteRestaurantSearchPresenter({
+      favoriteRestaurant: FavouriteRestaurant,
+      view,
     });
-    view.showRestaurant(restaurants);
+    new FavoriteRestaurantShowPresenter({
+      favoriteRestaurant: FavouriteRestaurant,
+      view,
+    });
   },
 
 
